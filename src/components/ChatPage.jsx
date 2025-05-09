@@ -483,6 +483,7 @@ function ChatPage() {
   }
 }, [messages]);
 
+
   if (authLoading) return <p>Cargando...</p>;
   if (!user) return <Navigate to="/login" />;
 
