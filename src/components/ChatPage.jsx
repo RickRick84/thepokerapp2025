@@ -537,11 +537,6 @@ const incrementUsage = () => {
 
 };
 
-const incrementUsage = () => {
-  const { count, lastTime } = getUsageData();
-  saveUsageData(count + 1, lastTime);
-};
-
   const sendMessageLogic = async () => {
   if (!input.trim()) return;
 
