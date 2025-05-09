@@ -614,31 +614,6 @@ const incrementUsage = () => {
 
    return (
     <>
-      <UserMenu />
-      <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-
-      <div className="credit-upgrade-container">
-        <div className="credit-display">{credits} credits</div>
-        <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
-      </div>
-
-      <button
-        onClick={toggleSidebar}
-        style={{
-          position: 'fixed',
-          top: '12px',
-          right: '15px',
-          zIndex: 21000,
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '1.8rem',
-          color: 'white',
-        }}
-      >
-        ☰
-      </button>
-
       {showPopup && (
         <div className="popup-overlay" onClick={() => setShowPopup(false)}>
           <div style={{ position: 'relative' }}>
@@ -696,6 +671,31 @@ const incrementUsage = () => {
       )}
 
       <div className="app chat-page-container">
+        <UserMenu />
+      <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+
+      <div className="credit-upgrade-container">
+        <div className="credit-display">{credits} credits</div>
+        <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
+      </div>
+
+      <button
+        onClick={toggleSidebar}
+        style={{
+          position: 'fixed',
+          top: '12px',
+          right: '15px',
+          zIndex: 21000,
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '1.8rem',
+          color: 'white',
+        }}
+      >
+        ☰
+      </button>
+      
         <div className="chat-box" ref={chatBoxRef}>
           {messages.slice(1).map((msg, idx) => (
             <div key={idx} className={`message ${msg.role}`}>
