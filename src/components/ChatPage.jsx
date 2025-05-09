@@ -619,8 +619,8 @@ const incrementUsage = () => {
 
     <div className="credit-upgrade-container">
   <div className="credit-display">
-    🪙 {credits} credits
-  </div>
+  {credits} credits
+</div>
   <button
     onClick={() => setShowPopup(true)}
     className="upgrade-button"

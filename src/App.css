@@ -318,19 +318,30 @@ body {
   }
 
   .credit-upgrade-container {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 20000;
-}
-  
+    position: fixed;
+    top: 10px;
+    right: 52px;
+    z-index: 20000;
+    gap: 6px;
+  }
+
   .credit-display {
     font-size: 0.8rem;
-    padding: 4px 8px;
+    padding: 4px 6px;
+    background-color: #000;
+    border: 1px solid #444;
   }
-  
+
   .upgrade-button {
-    padding: 5px 10px;
+    padding: 5px 8px;
     font-size: 0.8rem;
-  }  
+  }
+
+  /* ☰ botón lateral */
+  button[onClick][style*="☰"] {
+    top: 10px !important;
+    right: 10px !important;
+  }
 }
+
+
