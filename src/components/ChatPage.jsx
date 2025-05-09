@@ -621,7 +621,7 @@ const incrementUsage = () => {
   style={{
     position: 'fixed',
     top: '15px',
-    right: '15px',
+    right: 'calc(50% - 270px)',
     zIndex: 1000,
     display: 'flex',
     alignItems: 'center',
