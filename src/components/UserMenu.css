@@ -1,10 +1,4 @@
-.user-menu {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10010;
-  }
-  
+
   .user-avatar {
     width: 42px;
     height: 42px;

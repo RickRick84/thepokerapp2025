@@ -243,46 +243,6 @@ button[onClick][style*="☰"] {
   background-color: #2a2ad1;
 }
 
-/* RESPONSIVE FIX */
-@media only screen and (max-width: 768px) {
-  .chat-box {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 60px !important;
-    max-height: 60vh;
-  }
-
-  .input-bar {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 20px;
-  }
-
-  .input-bar input,
-  .input-bar button {
-    width: 100%;
-  }
-
-  .app.chat-page-container {
-    padding-bottom: 80px;
-  }
-
-  .user-menu-container {
-    top: 12px;
-    left: 12px;
-  }
-
-  .credit-upgrade-container {
-    top: 12px;
-    right: 60px;
-  }
-
-  .sidebar-toggle-button {
-    top: 12px;
-    right: 15px;
-  }
-}
-
 .user-menu-container {
   position: fixed;
   top: 12px;

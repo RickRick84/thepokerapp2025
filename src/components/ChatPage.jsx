@@ -6,6 +6,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
 import UserMenu from './UserMenu';
 import '../App.css';
+import '../MobileFix.css';
 import buttons from '../buttonLabels.js';
 import SidebarMenu from './SidebarMenu';
 
@@ -682,22 +683,9 @@ const incrementUsage = () => {
         <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
       </div>
 
-      <button
-        onClick={toggleSidebar}
-        style={{
-          position: 'fixed',
-          top: '12px',
-          right: '15px',
-          zIndex: 21000,
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '1.8rem',
-          color: 'white',
-        }}
-      >
-        ☰
-      </button>
+      <button onClick={toggleSidebar} className="sidebar-toggle-button">
+  ☰
+</button>
       
         <div className="chat-box" ref={chatBoxRef}>
           {messages.slice(1).map((msg, idx) => (
