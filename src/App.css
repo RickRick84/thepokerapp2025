@@ -358,4 +358,23 @@ body {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .chat-box {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 60px !important;
+    max-height: 60vh;
+  }
+
+  .input-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 20px;
+  }
+
+  .input-bar input,
+  .input-bar button {
+    width: 100%;
+  }
+}
 
