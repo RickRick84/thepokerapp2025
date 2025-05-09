@@ -1,4 +1,11 @@
 /* Estilos Generales */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  touch-action: manipulation;
+}
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
