@@ -339,6 +339,14 @@ body {
     right: 10px !important;
     z-index: 20001 !important;
   }
+
+  /* Menú de usuario (si usa clase específica, agregar aquí) */
+  .user-menu-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 20002;
+  }
 }
 
 
