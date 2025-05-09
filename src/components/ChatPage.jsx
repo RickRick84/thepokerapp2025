@@ -535,21 +535,6 @@ const incrementUsage = () => {
   saveUsageData(count + 1, lastTime);
 };
 
-  // 🧊 Si se pasó el cooldown, se reinicia automáticamente
-  if (now - lastTime > cooldownMillis) {
-    saveUsageData(0, now);
-
-    // Opcional: volver a mostrar mensaje de bienvenida
-    setMessages([
-      { role: 'system', content: t.system },
-      { role: 'assistant', content: t.welcome },
-    ]);
-
-    return true;
-  }
-
-  // 🧮 Todavía dentro del cooldown o sin pasar el límite
-  return count < MAX_FREE_QUESTIONS;
 };
 
 const incrementUsage = () => {
