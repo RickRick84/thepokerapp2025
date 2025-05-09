@@ -5,6 +5,8 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   touch-action: manipulation;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -16,6 +18,7 @@ body {
   min-height: 100vh;
   width: 100%;
 }
+
 /* Contenedor principal */
 .app {
   display: flex;
@@ -44,29 +47,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Título */
-.title-container {
-  width: 100%;
-  max-width: 540px;
-  margin: 0 auto 1.5rem auto;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title-image {
-  max-width: 100%;
-  height: auto;
-  max-height: 250px;
-}
-
 /* Caja de mensajes */
 .chat-box {
   background-color: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(12px);
   padding: 1rem;
-  width: 540px;
+  width: 100%;
   max-width: 540px;
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
@@ -74,7 +60,6 @@ body {
   flex-direction: column;
   margin-bottom: 0.8rem;
   box-sizing: border-box;
-  min-width: 0;
   flex-grow: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -108,6 +93,7 @@ body {
   color: #000;
 }
 
+/* Barra de input */
 .input-bar {
   width: 100%;
   max-width: 800px;
@@ -195,55 +181,27 @@ body {
   color: #e91e63;
 }
 
-.plan {
-  margin-bottom: 1rem;
+/* Botón ☰ lateral */
+button[onClick][style*="☰"] {
+  position: fixed !important;
+  top: 12px !important;
+  right: 15px !important;
+  z-index: 21000 !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.8rem !important;
+  color: white !important;
 }
 
-.toggle-button {
-  position: absolute;
-  top: 15px;
-  left: -25px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 1rem;
-  background-color: #00ff88;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  z-index: 10010;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.toggle-button:hover {
-  background-color: #00e07a;
-}
-
-.logout-button {
-  background-color: #ff5555;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 1rem;
-  font-weight: bold;
-}
-
-.logout-button:hover {
-  background-color: #ff3333;
-}
-
+/* Créditos y Upgrade */
 .credit-upgrade-container {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  position: absolute;
-  top: 15px;
-  right: 60px;
+  position: relative;
+  margin-top: 1rem;
   z-index: 21000;
+  justify-content: center;
 }
 
 .credit-display {
@@ -279,98 +237,7 @@ body {
   background-color: #2a2ad1;
 }
 
-
-  .popup-container {
-    flex-direction: column;
-    padding: 1.5rem;
-    gap: 1rem;
-  }
-
-  .popup-card {
-    width: 100%;
-  }
-
-  .app.chat-page-container {
-  min-height: calc(100svh - 60px);
-  padding-top: 70px;
-  padding-bottom: 20px;
-  box-sizing: border-box;
-}
-
-  .chat-box {
-  background-color: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(12px);
-  padding: 1rem;
-  width: 100%;
-  max-width: 540px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.8rem;
-  box-sizing: border-box;
-  flex-grow: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-  .input-bar {
-  width: 100%;
-  max-width: 540px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 20px auto;
-  justify-content: center;
-}
-  .input-bar input,
-  .input-bar button {
-    width: 100%;
-  }
-
-  .auth-form-container {
-    margin-top: 2rem;
-    padding: 1.5rem;
-  }
-
-  .credit-upgrade-container {
-  position: fixed;
-  top: env(safe-area-inset-top, 10px);
-  right: 56px;
-  z-index: 20000;
-  gap: 6px;
-}
-
-  .credit-display {
-    font-size: 0.8rem;
-    padding: 4px 6px;
-    background-color: #000;
-    border: 1px solid #444;
-  }
-
-  .upgrade-button {
-    padding: 5px 8px;
-    font-size: 0.8rem;
-  }
-
-  /* ☰ botón lateral */
-  button[onClick][style*="☰"] {
-  position: fixed !important;
-  top: env(safe-area-inset-top, 10px) !important;
-  right: 10px !important;
-  z-index: 20001 !important;
-}
-
-  /* Menú de usuario (si usa clase específica, agregar aquí) */
-  .user-menu-container {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 20002;
-  }
-}
-
+/* RESPONSIVE FIX */
 @media only screen and (max-width: 768px) {
   .chat-box {
     width: 100%;
@@ -389,5 +256,10 @@ body {
   .input-bar button {
     width: 100%;
   }
+
+.app.chat-page-container {
+  padding-bottom: 80px;
 }
+}
+
 
