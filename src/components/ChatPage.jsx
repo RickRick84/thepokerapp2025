@@ -620,8 +620,8 @@ const incrementUsage = () => {
     <div
   style={{
     position: 'fixed',
-    top: '22px',
-    right: '60px',
+    top: '15px',
+    right: '15px',
     zIndex: 1000,
     display: 'flex',
     alignItems: 'center',
