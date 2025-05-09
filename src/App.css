@@ -273,3 +273,7 @@ button[onClick][style*="☰"] {
   color: white;
   cursor: pointer;
 }
+
+body {
+  overflow-y: hidden;
+}

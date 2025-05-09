@@ -1,38 +1,97 @@
 @media only screen and (max-width: 768px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    overscroll-behavior: none;
+    background-attachment: fixed;
+  }
+
+  .app.chat-page-container {
+    padding-top: 80px;
+    padding-bottom: 90px;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
   .chat-box {
     width: 100%;
     max-width: 100%;
     margin-top: 60px !important;
-    max-height: 60vh;
+    max-height: 55vh;
+    overflow-y: auto;
+    border-radius: 12px;
   }
 
   .input-bar {
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
   }
 
   .input-bar input,
   .input-bar button {
     width: 100%;
-  }
-
-  .app.chat-page-container {
-    padding-bottom: 80px;
+    font-size: 1rem;
   }
 
   .user-menu-container {
+    position: fixed;
     top: 12px;
     left: 12px;
+    z-index: 99999 !important;
+    display: flex;
+    align-items: center;
   }
 
   .credit-upgrade-container {
+    position: fixed;
     top: 12px;
     right: 60px;
+    z-index: 99999 !important;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
   }
 
   .sidebar-toggle-button {
+    position: fixed;
     top: 12px;
     right: 15px;
+    z-index: 99999 !important;
+    font-size: 1.8rem;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+
+  .sidebar-menu {
+    z-index: 99998 !important;
+  }
+
+  .sidebar-logo {
+    max-width: 120px;
+  }
+
+  .sidebar-link {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
   }
 }
