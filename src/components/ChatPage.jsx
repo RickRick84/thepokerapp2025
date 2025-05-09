@@ -671,8 +671,11 @@ const incrementUsage = () => {
       )}
 
       <div className="app chat-page-container">
-        <UserMenu />
-      <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+  <div className="user-menu-container">
+    <UserMenu />
+  </div>
+
+  <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       <div className="credit-upgrade-container">
         <div className="credit-display">{credits} credits</div>
