@@ -295,6 +295,13 @@ body {
     width: 100%;
   }
 
+  .app.chat-page-container {
+  min-height: 100svh;
+  height: 100svh;
+  position: relative;
+  overflow: visible;
+}
+
   .chat-box {
     width: 100%;
     max-width: 100%;
