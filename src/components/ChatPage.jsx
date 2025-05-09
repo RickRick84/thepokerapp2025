@@ -617,42 +617,13 @@ const incrementUsage = () => {
     <UserMenu />
     <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-    <div
-  style={{
-    position: 'fixed',
-    top: '15px',
-    right: 'calc(50% - 270px)',
-    zIndex: 1000,
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
-  }}
->
-  <div
-    style={{
-      backgroundColor: 'black',
-      color: 'white',
-      border: '1px solid #444',
-      borderRadius: '8px',
-      padding: '4px 10px',
-      display: 'flex',
-      alignItems: 'center',
-      fontSize: '14px',
-    }}
-  >
+    <div className="credit-upgrade-container">
+  <div className="credit-display">
     💬 {credits} credits
   </div>
   <button
     onClick={() => setShowPopup(true)}
-    style={{
-      backgroundColor: '#5a4bff',
-      color: 'white',
-      border: 'none',
-      padding: '6px 14px',
-      borderRadius: '8px',
-      fontWeight: 'bold',
-      cursor: 'pointer',
-    }}
+    className="upgrade-button"
   >
     Upgrade
   </button>
