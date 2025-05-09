@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   touch-action: manipulation;
 }
 body {
@@ -296,10 +296,10 @@ body {
   }
 
   .app.chat-page-container {
-  min-height: 100svh;
-  height: 100svh;
-  position: relative;
-  overflow: visible;
+  min-height: calc(100svh - 60px);
+  padding-top: 70px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
 }
 
   .chat-box {
