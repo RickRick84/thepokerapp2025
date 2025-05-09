@@ -483,11 +483,11 @@ function ChatPage() {
   const t = translations[currentLang];
   const isAdmin = user?.email === 'rickybarba@hotmail.com';
 
-  // 🧠 CONFIGURACIÓN
+// 🧠 CONFIGURACIÓN
 const MAX_FREE_QUESTIONS = 3;
-const COOLDOWN_MINUTES = 1; // Cambiá esto por el tiempo que quieras
+const COOLDOWN_MINUTES = 1;
 
-// 🧠 FUNCIONES
+// 🧠 FUNCIONES DE CONTROL DE USO
 const getUsageData = () => {
   const raw = localStorage.getItem('usageData');
   return raw ? JSON.parse(raw) : { count: 0, lastTime: 0 };
@@ -509,12 +509,39 @@ const canAskQuestion = () => {
   const now = Date.now();
   const cooldownMillis = COOLDOWN_MINUTES * 60 * 1000;
 
+  // 🔄 Si el cooldown expiró, reinicia uso y mensaje
   if (now - lastTime > cooldownMillis) {
-    // Cooldown pasado, reinicia
     saveUsageData(0, now);
+    setMessages([
+      { role: 'system', content: t.system },
+      { role: 'assistant', content: t.welcome },
+    ]);
     return true;
   }
 
+  // ⛔ Si no expiró, aplica la lógica normal
+  return count < MAX_FREE_QUESTIONS;
+};
+
+const incrementUsage = () => {
+  const { count, lastTime } = getUsageData();
+  saveUsageData(count + 1, lastTime);
+};
+
+  // 🧊 Si se pasó el cooldown, se reinicia automáticamente
+  if (now - lastTime > cooldownMillis) {
+    saveUsageData(0, now);
+
+    // Opcional: volver a mostrar mensaje de bienvenida
+    setMessages([
+      { role: 'system', content: t.system },
+      { role: 'assistant', content: t.welcome },
+    ]);
+
+    return true;
+  }
+
+  // 🧮 Todavía dentro del cooldown o sin pasar el límite
   return count < MAX_FREE_QUESTIONS;
 };
 
@@ -526,24 +553,28 @@ const incrementUsage = () => {
   const sendMessageLogic = async () => {
   if (!input.trim()) return;
 
+  // 🔒 Verifica si puede preguntar
   if (!canAskQuestion()) {
     setShowPopup(true);
     return;
   }
 
+  // 🔼 Incrementa uso solo si pasó el límite
+  incrementUsage();
+
   const userMessage = { role: 'user', content: input };
   const newMessages = [...messages, userMessage];
+
   setMessages(newMessages);
   setInput('');
   setLoading(true);
-  incrementUsage();
 
   try {
-  const response = await fetch("/api/chat", {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ messages: newMessages }),
-});
+    const response = await fetch("/api/chat", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: newMessages }),
+    });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
@@ -770,5 +801,4 @@ const incrementUsage = () => {
 )}
     </>
   );
-}
 export default ChatPage;
