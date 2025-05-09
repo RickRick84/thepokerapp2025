@@ -1,0 +1,54 @@
+.user-menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10010;
+  }
+  
+  .user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #00ff88;
+  }
+  
+  .dropdown-menu.left-align {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: auto;
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+    z-index: 10000;
+  }
+  
+
+  .dropdown-menu div {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .dropdown-menu div:hover {
+    background: rgba(0, 255, 136, 0.1);
+  }
+  
+  @keyframes fadeSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
