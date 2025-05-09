@@ -612,97 +612,89 @@ const incrementUsage = () => {
     setTimeout(() => setShowMessage(false), 3000); // Se oculta solo en 3 segundos
   };
 
-  return (
-  <>
-    <UserMenu />
-    <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+   return (
+    <>
+      <UserMenu />
+      <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-    <div className="credit-upgrade-container">
-  <div className="credit-display">
-  {credits} credits
-</div>
-  <button
-    onClick={() => setShowPopup(true)}
-    className="upgrade-button"
-  >
-    Upgrade
-  </button>
-</div>
+      <div className="credit-upgrade-container">
+        <div className="credit-display">{credits} credits</div>
+        <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
+      </div>
 
-    <button
-      onClick={toggleSidebar}
-      style={{
-        position: 'fixed',
-        top: '12px',
-        right: '15px',
-        zIndex: 21000,
-        background: 'transparent',
-        border: 'none',
-        cursor: 'pointer',
-        fontSize: '1.8rem',
-        color: 'white',
-      }}
-    >
-      ☰
-    </button>
+      <button
+        onClick={toggleSidebar}
+        style={{
+          position: 'fixed',
+          top: '12px',
+          right: '15px',
+          zIndex: 21000,
+          background: 'transparent',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '1.8rem',
+          color: 'white',
+        }}
+      >
+        ☰
+      </button>
 
       {showPopup && (
-  <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-    <div style={{ position: 'relative' }}>
-      <img
-        src={'/popup_image_poker_plans_.jpg'}
-        alt="Poker Plans"
-        style={{
-          maxWidth: '98vw',
-          maxHeight: '95vh',
-          borderRadius: '20px',
-          boxShadow: '0 0 40px rgba(0,0,0,0.8)',
-          cursor: 'pointer'
-        }}
-      />
-      {/* Botones invisibles encima de las zonas donde están los SUBSCRIBE */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          triggerComingSoonMessage();
-        }}
-        style={{
-          position: 'absolute',
-          bottom: '23%',
-          left: '18%',
-          width: '20%',
-          height: '10%',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer'
-        }}
-      />
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          triggerComingSoonMessage();
-        }}
-        style={{
-          position: 'absolute',
-          bottom: '23%',
-          right: '18%',
-          width: '20%',
-          height: '10%',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer'
-        }}
-      />
-    </div>
-  </div>
-)}
+        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+          <div style={{ position: 'relative' }}>
+            <img
+              src={'/popup_image_poker_plans_.jpg'}
+              alt="Poker Plans"
+              style={{
+                maxWidth: '98vw',
+                maxHeight: '95vh',
+                borderRadius: '20px',
+                boxShadow: '0 0 40px rgba(0,0,0,0.8)',
+                cursor: 'pointer'
+              }}
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                triggerComingSoonMessage();
+              }}
+              style={{
+                position: 'absolute',
+                bottom: '23%',
+                left: '18%',
+                width: '20%',
+                height: '10%',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            />
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                triggerComingSoonMessage();
+              }}
+              style={{
+                position: 'absolute',
+                bottom: '23%',
+                right: '18%',
+                width: '20%',
+                height: '10%',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer'
+              }}
+            />
+          </div>
+        </div>
+      )}
 
-{isAdmin && (
-  <div style={{ padding: '1rem', textAlign: 'center' }}>
-    <AdminControls resetUserCount={() => localStorage.clear()} />
-  </div>
-)}
-  
+      {isAdmin && (
+        <div style={{ padding: '1rem', textAlign: 'center' }}>
+          <AdminControls resetUserCount={() => localStorage.clear()} />
+        </div>
+      )}
+
       <div className="app chat-page-container">
         <div className="chat-box" ref={chatBoxRef}>
           {messages.slice(1).map((msg, idx) => (
@@ -712,17 +704,16 @@ const incrementUsage = () => {
               </div>
             </div>
           ))}
-  
+
           {loading && (
             <div className="message assistant">
               <span>{t.writing}</span>
             </div>
           )}
-  
-          {/* Marcador para scroll automático */}
+
           <div ref={chatEndRef}></div>
         </div>
-  
+
         <div className="input-bar">
           <input
             value={input}
@@ -738,22 +729,22 @@ const incrementUsage = () => {
       </div>
 
       {showMessage && (
-  <div style={{
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'rgba(0,0,0,0.85)',
-    color: '#fff',
-    padding: '1rem 2rem',
-    borderRadius: '12px',
-    fontSize: '1.2rem',
-    zIndex: 10000,
-    boxShadow: '0 0 20px rgba(0,0,0,0.6)',
-    textAlign: 'center'
-  }}>
-    {t.comingSoon}
-  </div>
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: 'rgba(0,0,0,0.85)',
+          color: '#fff',
+          padding: '1rem 2rem',
+          borderRadius: '12px',
+          fontSize: '1.2rem',
+          zIndex: 10000,
+          boxShadow: '0 0 20px rgba(0,0,0,0.6)',
+          textAlign: 'center'
+        }}>
+          {t.comingSoon}
+        </div>
       )}
     </>
   );
