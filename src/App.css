@@ -320,12 +320,12 @@ body {
   }
 
   .credit-upgrade-container {
-    position: fixed;
-    top: 10px;
-    right: 56px;
-    z-index: 20000;
-    gap: 6px;
-  }
+  position: fixed;
+  top: env(safe-area-inset-top, 10px);
+  right: 56px;
+  z-index: 20000;
+  gap: 6px;
+}
 
   .credit-display {
     font-size: 0.8rem;
@@ -341,11 +341,11 @@ body {
 
   /* ☰ botón lateral */
   button[onClick][style*="☰"] {
-    position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 20001 !important;
-  }
+  position: fixed !important;
+  top: env(safe-area-inset-top, 10px) !important;
+  right: 10px !important;
+  z-index: 20001 !important;
+}
 
   /* Menú de usuario (si usa clase específica, agregar aquí) */
   .user-menu-container {
