@@ -477,6 +477,12 @@ function ChatPage() {
     }
   }, [messages, loading]);
   
+  useEffect(() => {
+  if (chatEndRef.current) {
+    chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}, [messages]);
+
   if (authLoading) return <p>Cargando...</p>;
   if (!user) return <Navigate to="/login" />;
 

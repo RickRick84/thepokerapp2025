@@ -52,12 +52,16 @@
   border-radius: 6px;
   background-color: #222;
   color: #fff;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px; /* Aumentado */
+  font-weight: 600; /* Menos bloque que bold */
+  font-family: 'Segoe UI', sans-serif; /* Moderna y legible */
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
   transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .sidebar-link:hover {
@@ -87,3 +91,4 @@
     font-size: 16px;
   }
 }
+

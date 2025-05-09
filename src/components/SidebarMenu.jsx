@@ -12,11 +12,11 @@ const SidebarMenu = ({ isOpen, toggleSidebar }) => {
           <img src={PokerBetLogo} alt="PokerBet" className="sidebar-logo" />
         </div>
       </div>
-      <button className="sidebar-link" onClick={toggleSidebar}>🧢 MERCHANDISING</button>
-      <button className="sidebar-link" onClick={toggleSidebar}>🎟️ SORTEO SEMANAL</button>
-      <button className="sidebar-link" onClick={toggleSidebar}>🎰 SORTEO MENSUAL</button>
-      <button className="sidebar-link" onClick={toggleSidebar}>📆 CALENDARIO</button>
-      <button className="sidebar-link" onClick={toggleSidebar}>📰 NEWS</button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🧢 <span>MERCHANDISING</span></button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🎟️ <span>SORTEO SEMANAL</span></button>
+      <button className="sidebar-link" onClick={toggleSidebar}>🎰 <span>SORTEO MENSUAL</span></button>
+      <button className="sidebar-link" onClick={toggleSidebar}>📆 <span>CALENDARIO</span></button>
+      <button className="sidebar-link" onClick={toggleSidebar}>📰 <span>NEWS</span></button>
     </div>
   );
 };
