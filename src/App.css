@@ -24,20 +24,18 @@ body {
 
 /* Página del chat */
 .app.chat-page-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: 95vh;
-  height: 85vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  position: relative;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 /* Título */
@@ -304,10 +302,7 @@ body {
     margin-top: 20px;
   }
 
-  .input-bar input {
-    width: 100%;
-  }
-
+  .input-bar input,
   .input-bar button {
     width: 100%;
   }
@@ -320,7 +315,7 @@ body {
   .credit-upgrade-container {
     position: fixed;
     top: 10px;
-    right: 52px;
+    right: 56px;
     z-index: 20000;
     gap: 6px;
   }
@@ -339,8 +334,10 @@ body {
 
   /* ☰ botón lateral */
   button[onClick][style*="☰"] {
+    position: fixed !important;
     top: 10px !important;
     right: 10px !important;
+    z-index: 20001 !important;
   }
 }
 

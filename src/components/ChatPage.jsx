@@ -633,7 +633,7 @@ const incrementUsage = () => {
       onClick={toggleSidebar}
       style={{
         position: 'fixed',
-        top: '15px',
+        top: '12px',
         right: '15px',
         zIndex: 21000,
         background: 'transparent',
