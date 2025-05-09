@@ -535,8 +535,6 @@ const incrementUsage = () => {
   saveUsageData(count + 1, lastTime);
 };
 
-};
-
   const sendMessageLogic = async () => {
   if (!input.trim()) return;
 
@@ -785,7 +783,8 @@ const incrementUsage = () => {
   }}>
     {t.comingSoon}
   </div>
-)}
+      )}
     </>
   );
+}
 export default ChatPage;
