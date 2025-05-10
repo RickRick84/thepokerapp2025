@@ -616,54 +616,27 @@ const incrementUsage = () => {
    return (
     <>
       {showPopup && (
-        <div className="popup-overlay" onClick={() => setShowPopup(false)}>
-          <div style={{ position: 'relative' }}>
-            <img
-              src={'/popup_image_poker_plans_.jpg'}
-              alt="Poker Plans"
-              style={{
-                maxWidth: '98vw',
-                maxHeight: '95vh',
-                borderRadius: '20px',
-                boxShadow: '0 0 40px rgba(0,0,0,0.8)',
-                cursor: 'pointer'
-              }}
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                triggerComingSoonMessage();
-              }}
-              style={{
-                position: 'absolute',
-                bottom: '23%',
-                left: '18%',
-                width: '20%',
-                height: '10%',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            />
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                triggerComingSoonMessage();
-              }}
-              style={{
-                position: 'absolute',
-                bottom: '23%',
-                right: '18%',
-                width: '20%',
-                height: '10%',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            />
-          </div>
-        </div>
-      )}
+  <div className="popup-overlay" onClick={() => setShowPopup(false)}>
+    <div
+      className="popup-container"
+      style={{ padding: 0, background: 'none', boxShadow: 'none', maxWidth: '90vw' }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button className="close-btn" onClick={() => setShowPopup(false)}>×</button>
+      <img
+        src="/popup_image_poker_plans_.jpg"
+        alt="Planes de suscripción"
+        style={{
+          width: '100%',
+          height: 'auto',
+          borderRadius: '16px',
+          maxWidth: '520px',
+          display: 'block'
+        }}
+      />
+    </div>
+  </div>
+)}
 
       {isAdmin && (
         <div style={{ padding: '1rem', textAlign: 'center' }}>
@@ -688,13 +661,15 @@ const incrementUsage = () => {
 </button>
       
         <div className="chat-box" ref={chatBoxRef}>
-          {messages.slice(1).map((msg, idx) => (
-            <div key={idx} className={`message ${msg.role}`}>
-              <div className="message-content">
-                <span>{msg.content}</span>
-              </div>
-            </div>
-          ))}
+          {messages.slice(1).map((msg, idx) => {
+  return (
+    <div key={idx} className={`message ${msg.role}`}>
+      <div className="message-content">
+        <span>{msg.content}</span>
+      </div>
+    </div>
+  );
+})}
 
           {loading && (
             <div className="message assistant">
