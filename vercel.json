@@ -1,14 +1,10 @@
 {
-  "functions": {
-    "api/chat.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "framework": "vite",
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" },
+    { "src": "api/chat.js", "use": "@vercel/node" }
+  ],
   "routes": [
     { "src": "/api/chat", "dest": "api/chat.js" },
-    { "src": "/(.*)", "dest": "/" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
