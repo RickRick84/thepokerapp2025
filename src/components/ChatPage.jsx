@@ -557,10 +557,10 @@ const incrementUsage = () => {
 
   try {
     const response = await fetch("/api/chat", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: newMessages }),
-    });
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ messages: newMessages }),
+});
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
