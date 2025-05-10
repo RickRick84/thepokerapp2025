@@ -1,6 +1,6 @@
 @media only screen and (max-width: 768px) {
   html, body {
-    background-image: url('/bg-mobile.jpg');
+    background-image: url('/bg_mobile.jpg');
     background-size: cover;
     background-attachment: scroll;
     background-position: center;
