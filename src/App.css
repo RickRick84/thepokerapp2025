@@ -90,13 +90,13 @@ html, body {
 .message.user {
   align-self: flex-end;
   background-color: #00e0ff;
-  color: #000;
+  color: white;
 }
 
 .message.assistant {
   align-self: flex-start;
   background-color: #00ff88;
-  color: #000;
+  color: white;
 }
 
 /* Barra de input */
