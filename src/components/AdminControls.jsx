@@ -6,4 +6,7 @@
       🔄 Resetear preguntas (admin)
     </button>
   </div>
+  
 )}
+
+export default AdminControls;
