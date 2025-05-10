@@ -1,11 +1,12 @@
 @media only screen and (max-width: 768px) {
   html, body {
-    margin: 0;
-    padding: 0;
-    height: auto;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overscroll-behavior: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: none;
   }
 
   .app.chat-page-container {

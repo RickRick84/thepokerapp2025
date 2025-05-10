@@ -274,6 +274,7 @@ button[onClick][style*="☰"] {
   cursor: pointer;
 }
 
-body {
-  overflow-x: hidden;
+html, body {
+  overflow-y: hidden;
+  height: 100vh;
 }
