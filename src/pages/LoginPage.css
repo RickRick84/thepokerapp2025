@@ -96,3 +96,18 @@ body {
   margin-bottom: 10px;
 }
 
+.logout-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #e91e63;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c2185b;
+}
+

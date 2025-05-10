@@ -57,7 +57,7 @@ function UserMenu() {
   };
 
   return (
-    <div className="user-menu" ref={menuRef}>
+    <div className="user-menu" ref={menuRef} style={{ position: 'relative' }}>
       <img
         src={user?.photoURL || '/default-avatar.png'}
         alt="Profile"

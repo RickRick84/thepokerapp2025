@@ -1,48 +1,35 @@
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+}
 
-  .user-avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid #8a6d1c00;
-  }
-  
-  .dropdown-menu.left-align {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    right: auto;
-    background: rgba(0, 0, 0, 0.95);
-    color: white;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
-    z-index: 10000;
-  }
-  
+.dropdown-menu.left-align {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #222;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  z-index: 10000;
+  width: 160px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
 
-  .dropdown-menu div {
-    padding: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .dropdown-menu div:hover {
-    background: rgba(0, 255, 136, 0.1);
-  }
-  
-  @keyframes fadeSlideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+.dropdown-menu.left-align button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.dropdown-menu.left-align button:hover {
+  background-color: #333;
+}

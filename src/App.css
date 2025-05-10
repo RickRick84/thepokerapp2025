@@ -1,3 +1,13 @@
+:root {
+  --app-height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --app-height: 100dvh;
+  }
+}
+
 /* Estilos Generales */
 html, body {
   margin: 0;
@@ -8,21 +18,11 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
-  min-height: 100vh;
+  min-height: var(--app-height);
   width: 100%;
   overscroll-behavior: none;
-}
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url('/bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
-  min-height: 100vh;
-  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Contenedor principal */
@@ -34,7 +34,7 @@ body {
   width: 100%;
   max-width: 600px;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: var(--app-height);
 }
 
 /* Página del chat */
@@ -143,7 +143,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10001;
+  z-index: 5000;
   padding: 1rem;
 }
 
@@ -187,67 +187,27 @@ body {
   color: #e91e63;
 }
 
-/* Botón ☰ lateral */
-button[onClick][style*="☰"] {
-  position: fixed !important;
-  top: 12px !important;
-  right: 15px !important;
-  z-index: 21000 !important;
-  background: transparent !important;
-  border: none !important;
-  font-size: 1.8rem !important;
-  color: white !important;
-}
-
-/* Créditos y Upgrade */
-.credit-upgrade-container {
-  position: fixed;
-  top: 15px;
-  right: 60px;
-  z-index: 21000;
+.admin-controls {
+  margin-top: 1rem;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  justify-content: center;
 }
 
-.credit-display {
-  background-color: #000;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.credit-display::before {
-  content: "🪙";
-}
-
-.upgrade-button {
-  background-color: #3d3dff;
-  color: #fff;
+.admin-controls button {
+  padding: 0.5rem 1rem;
+  background-color: #e91e63;
+  color: white;
   border: none;
   border-radius: 8px;
-  padding: 6px 14px;
-  font-size: 0.9rem;
-  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.upgrade-button:hover {
-  background-color: #2a2ad1;
+  font-size: 1rem;
 }
 
 .user-menu-container {
   position: fixed;
   top: 12px;
-  left: 15px;
-  z-index: 21000;
+  left: 12px;
+  z-index: 1000;
   display: flex;
   align-items: center;
 }
@@ -256,7 +216,7 @@ button[onClick][style*="☰"] {
   position: fixed;
   top: 12px;
   right: 60px;
-  z-index: 21000;
+  z-index: 1000;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -266,15 +226,10 @@ button[onClick][style*="☰"] {
   position: fixed;
   top: 12px;
   right: 15px;
-  z-index: 21001;
+  z-index: 1000;
   font-size: 1.8rem;
   background: transparent;
   border: none;
   color: white;
   cursor: pointer;
-}
-
-html, body {
-  overflow-y: hidden;
-  height: 100vh;
 }
