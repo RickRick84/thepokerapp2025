@@ -486,7 +486,7 @@ function ChatPage() {
 
 
   if (authLoading) return <p>Cargando...</p>;
-  if (!user) return <Navigate to="/login" />;
+  if (!user) return null;
 
   const t = translations[currentLang];
   const isAdmin = user?.email === 'rickybarba@hotmail.com';
