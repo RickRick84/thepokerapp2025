@@ -572,7 +572,8 @@ const incrementUsage = () => {
   if (!input.trim()) return;
 
   // 🔒 Verifica si puede preguntar
-  if (!canAskQuestion()) {
+  const usageData = getUsageData();
+if (!canAskQuestion()) {
   setMessages((prev) => [
     ...prev,
     { role: 'assistant', content: t.comingSoon }
@@ -581,8 +582,7 @@ const incrementUsage = () => {
   return;
 }
 
-  // 🔼 Incrementa uso solo si pasó el límite
-  incrementUsage();
+saveUsageData(usageData.count + 1, usageData.lastTime);
 
   const userMessage = { role: 'user', content: input };
   const newMessages = [...messages, userMessage];
