@@ -1,21 +1,37 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+
+import ChatPage from './components/ChatPage';
+import LoginPage from './pages/LoginPage';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 
-const DebugAuth = () => {
+const ProtectedRoute = ({ element }) => {
+  const { user, loading } = useAuth();
+  if (loading) return <p>Cargando...</p>;
+  return user ? element : <Navigate to="login" replace />;
+};
+
+function AppRoutes() {
   const { user, loading } = useAuth();
 
+  if (loading) return <p>Cargando...</p>;
+
   return (
-    <div style={{ padding: '2rem', color: 'white', backgroundColor: '#111', fontSize: '1.2rem' }}>
-      <p>Estado loading: {loading ? 'true' : 'false'}</p>
-      <p>Usuario: {user ? user.email : 'null'}</p>
-    </div>
+    <Routes>
+      <Route path="/" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
+      <Route path="/login" element={user ? <Navigate to="/chat" replace /> : <LoginPage />} />
+      <Route path="/chat" element={<ProtectedRoute element={<ChatPage />} />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
-};
+}
 
 function App() {
   return (
     <AuthProvider>
-      <DebugAuth />
+      <Router>
+        <AppRoutes />
+      </Router>
     </AuthProvider>
   );
 }
