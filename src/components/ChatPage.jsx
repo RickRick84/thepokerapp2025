@@ -545,21 +545,20 @@ const getRemainingCooldown = () => {
 };
 
 const canAskQuestion = () => {
-  const cooldownMillis = 60 * 1000; // 1 minuto
-  const usageData = JSON.parse(localStorage.getItem('usageData')) || {};
+  const usageData = getUsageData();
+  const now = Date.now();
+  const cooldownMillis = COOLDOWN_MINUTES * 60 * 1000;
+
   const count = usageData.count || 0;
   const lastTime = usageData.lastTime || 0;
-  const now = Date.now();
 
+  // ⏳ Si pasó el cooldown, solo resetea el contador, NO el lastTime
   if (now - lastTime > cooldownMillis) {
-    saveUsageData(0, now);
-    setMessages((prev) => [
-      ...prev,
-      { role: 'assistant', content: translations[currentLang].welcome }
-    ]);
+    saveUsageData(0, lastTime);
     return true;
   }
 
+  // 🔐 Limita preguntas si se superó el máximo
   return count < MAX_FREE_QUESTIONS;
 };
 
