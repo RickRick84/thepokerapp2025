@@ -451,7 +451,7 @@ function ChatPage() {
     sendAudioRef.current.play().catch((error) => console.error('Error playing sound:', error));
   };
 
-  useEffect(() => {
+    useEffect(() => {
     const browserLang = navigator.language?.slice(0, 2) || 'en';
     const availableLangs = Object.keys(translations);
     const selectedLang = availableLangs.includes(browserLang) ? browserLang : 'en';
@@ -466,29 +466,27 @@ function ChatPage() {
     ]);
   }, [currentLang]);
 
+  // 🔁 Scroll al principio cuando responde el bot
   useEffect(() => {
     const chatBox = chatBoxRef.current;
     if (!chatBox) return;
-  
-    // Solo hacer scroll si estamos cerca del final (previene jumps si estás leyendo)
-    const nearBottom = chatBox.scrollHeight - chatBox.scrollTop <= chatBox.clientHeight + 100;
-  
-    if (nearBottom) {
+
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage?.role === 'assistant') {
+      chatBox.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  // 🔁 Scroll al final cuando usted envía una pregunta
+  useEffect(() => {
+    const chatBox = chatBoxRef.current;
+    if (!chatBox) return;
+
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage?.role === 'user') {
       chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
     }
-  }, [messages, loading]);
-  
-  useEffect(() => {
-  const chatBox = chatBoxRef.current;
-  if (!chatBox) return;
-
-  const lastMessage = messages[messages.length - 1];
-
-  // Solo aplicamos si es respuesta del bot
-  if (lastMessage?.role === 'assistant') {
-    chatBox.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-}, [messages]);
+  }, [messages]);
 
   if (authLoading) {
   return (
