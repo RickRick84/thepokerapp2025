@@ -13,7 +13,7 @@ import SidebarMenu from './SidebarMenu';
 const translations = {
   es: {
     system: 'Eres un asistente amigable y servicial en español.',
-    welcome: '¡Hola! Soy tu asistente. ¿En qué puedo ayudarte hoy?',
+    welcome: '¡Hola! Soy tu asistente especialista en póker. ¿En qué puedo ayudarte hoy?',
     placeholder: 'Escribí tu pregunta...',
     writing: 'Escribiendo...',
     fetchError: 'Ocurrió un error al conectarse con la API.',
@@ -37,7 +37,7 @@ const translations = {
   },  
   en: {
     system: 'You are a friendly and helpful assistant in English.',
-    welcome: 'Hello! I am your assistant. How can I help you today?',
+    welcome: 'Hello! I am your poker expert assistant. How can I help you today?',
     placeholder: 'Type your question...',
     writing: 'Typing...',
     fetchError: 'An error occurred while connecting to the API.',
@@ -59,9 +59,33 @@ const translations = {
     pickPlan: 'Pick this plan',
     comingSoon: 'Relax... something great is coming 😉',
   },  
+  pt: {
+  system: "Você é um assistente amigável e prestativo em português.",
+  welcome: "Olá! Sou seu assistente especialista em pôquer. Como posso te ajudar hoje?",
+  placeholder: "Digite sua pergunta...",
+  writing: "Digitando...",
+  fetchError: "Ocorreu um erro ao conectar à API.",
+  openaiError: (code, msg) => `Erro do OpenAI: ${code || 'Código desconhecido'} - ${msg || 'Erro desconhecido'}`,
+  invalidOpenAIResponse: "Não foi possível obter uma resposta válida da OpenAI.",
+  choosePlan: "Escolha seu plano",
+  selectOne: "Selecione uma opção para aproveitar o bot sem limites.",
+  monthly: "Mensal",
+  annual: "Anual",
+  month: "mês",
+  year: "ano",
+  support: "Suporte incluído",
+  basicLimit: "Perguntas limitadas por dia",
+  oneTeam: "Apenas 1 usuário",
+  proLimit: "Perguntas quase ilimitadas",
+  unlimitedUsers: "Usuários e equipes ilimitados",
+  prioritySupport: "Suporte prioritário",
+  exclusiveContent: "Acesso a trivias e conteúdo exclusivo",
+  pickPlan: "Escolher este plano",
+  comingSoon: "Relaxa... vem coisa boa por aí 😉"
+},
   ru: {
     system: 'Вы дружелюбный и полезный помощник на русском языке.',
-    welcome: 'Привет! Я ваш помощник. Чем могу помочь?',
+    welcome: 'Привет! Я ваш помощник, специалист по покеру. Чем могу помочь?',
     placeholder: 'Введите ваш вопрос...',
     writing: 'Печатает...',
     fetchError: 'Произошла ошибка при подключении к API.',
@@ -85,7 +109,7 @@ const translations = {
   },  
   fr: {
     system: "Vous êtes un assistant amical et serviable en français.",
-    welcome: "Bonjour ! Je suis votre assistant. Comment puis-je vous aider aujourd'hui ?",
+    welcome: "Bonjour ! Je suis votre assistant spécialiste du poker. Comment puis-je vous aider aujourd'hui ?",
     placeholder: "Tapez votre question...",
     writing: "Écriture...",
     fetchError: "Une erreur s'est produite lors de la connexion à l'API.",
@@ -95,7 +119,7 @@ const translations = {
   },
   de: {
     system: "Du bist ein freundlicher und hilfsbereiter Assistent auf Deutsch.",
-    welcome: "Hallo! Ich bin dein Assistent. Wie kann ich dir heute helfen?",
+    welcome: "Hallo! Ich bin dein Poker-Experte-Assistent. Wie kann ich dir heute helfen?",
     placeholder: "Gib deine Frage ein...",
     writing: "Schreibe...",
     fetchError: "Beim Verbinden mit der API ist ein Fehler aufgetreten.",
@@ -155,7 +179,7 @@ const translations = {
   },
   it: {
     system: "Sei un assistente amichevole e disponibile in italiano.",
-    welcome: "Ciao! Sono il tuo assistente. Come posso aiutarti oggi?",
+    welcome: "Ciao! Sono il tuo assistente esperto di poker. Come posso aiutarti oggi?",
     placeholder: "Scrivi la tua domanda...",
     writing: "Scrivendo...",
     fetchError: "Si è verificato un errore durante la connessione all'API.",
@@ -562,9 +586,13 @@ const incrementUsage = () => {
 
   // 🔒 Verifica si puede preguntar
   if (!canAskQuestion()) {
-    setShowPopup(true);
-    return;
-  }
+  setMessages((prev) => [
+    ...prev,
+    { role: 'assistant', content: t.comingSoon }
+  ]);
+  setShowPopup(true);
+  return;
+}
 
   // 🔼 Incrementa uso solo si pasó el límite
   incrementUsage();
