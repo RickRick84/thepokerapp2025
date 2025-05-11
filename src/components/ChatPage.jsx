@@ -551,21 +551,21 @@ const getRemainingCooldown = () => {
 };
 
 const canAskQuestion = () => {
-  const { count, lastTime } = getUsageData();
+  const cooldownMillis = 60 * 1000; // 1 minuto
+  const usageData = JSON.parse(localStorage.getItem('usageData')) || {};
+  const count = usageData.count || 0;
+  const lastTime = usageData.lastTime || 0;
   const now = Date.now();
-  const cooldownMillis = COOLDOWN_MINUTES * 60 * 1000;
 
-  // 🔄 Si el cooldown expiró, reinicia uso y mensaje
   if (now - lastTime > cooldownMillis) {
     saveUsageData(0, now);
-    setMessages([
-      { role: 'system', content: t.system },
-      { role: 'assistant', content: t.welcome },
+    setMessages((prev) => [
+      ...prev,
+      { role: 'assistant', content: translations[currentLang].welcome }
     ]);
     return true;
   }
 
-  // ⛔ Si no expiró, aplica la lógica normal
   return count < MAX_FREE_QUESTIONS;
 };
 
