@@ -479,8 +479,14 @@ function ChatPage() {
   }, [messages, loading]);
   
   useEffect(() => {
-  if (chatEndRef.current) {
-    chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  const chatBox = chatBoxRef.current;
+  if (!chatBox) return;
+
+  const lastMessage = messages[messages.length - 1];
+
+  // Solo aplicamos si es respuesta del bot
+  if (lastMessage?.role === 'assistant') {
+    chatBox.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }, [messages]);
 
