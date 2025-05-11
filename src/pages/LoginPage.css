@@ -131,7 +131,6 @@ body {
     width: 100%;
     max-width: 92vw;
     box-sizing: border-box;
-    min-height: 100vh;
   }
 
   .auth-forms input,
