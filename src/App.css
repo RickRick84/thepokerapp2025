@@ -60,7 +60,7 @@ body {
   overflow-x: hidden;
   height: auto;
   min-height: 0;
-  scrollbar-width: none; /* Firefox */
+  max-height: 68vh;
 }
 
 .chat-box::-webkit-scrollbar {
