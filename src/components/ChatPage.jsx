@@ -699,7 +699,8 @@ const incrementUsage = () => {
 </div>
       
         <div className="chat-box" ref={chatBoxRef}>
-          {messages.slice(1).map((msg, idx) => {
+          {messages.map((msg, idx) => {
+  if (msg.role === 'system') return null;
   return (
     <div key={idx} className={`message ${msg.role}`}>
       <div className="message-content">
