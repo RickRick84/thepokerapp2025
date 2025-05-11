@@ -110,40 +110,30 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  .auth-form-container {
-    padding: 1.5rem 1rem;
-    margin: 2rem auto;
-    width: 92%;
-    border-radius: 12px;
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('/bg_mobile.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  .auth-forms input,
-  .auth-forms button {
+  .login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    box-sizing: border-box;
+  }
+
+  .login-container input,
+  .login-container button {
     font-size: 1rem;
     padding: 1rem;
     border-radius: 10px;
-  }
-
-  .google-button {
-    font-size: 1rem;
-    padding: 0.9rem;
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  .toggle-button-form {
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
-
-  .welcome-text {
-    font-size: 1rem;
-  }
-
-  .logout-button {
-    width: 100%;
-    padding: 0.9rem;
-    font-size: 1rem;
   }
 }

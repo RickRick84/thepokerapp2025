@@ -407,7 +407,7 @@ credit-display::before {
   }
 
   .app.chat-page-container {
-    padding-bottom: 80px;
+    padding-bottom: 120px;
     max-width: 95vw;
     margin: 0 auto;
   }
@@ -423,7 +423,7 @@ credit-display::before {
 
   .credit-upgrade-container {
     position: fixed;
-    top: 12px;
+    top: 16px;
     right: 56px;
     z-index: 999;
     display: flex;
