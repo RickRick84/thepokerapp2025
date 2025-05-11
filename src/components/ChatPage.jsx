@@ -475,7 +475,7 @@ function ChatPage() {
     sendAudioRef.current.play().catch((error) => console.error('Error playing sound:', error));
   };
 
-    useEffect(() => {
+      useEffect(() => {
     const browserLang = navigator.language?.slice(0, 2) || 'en';
     const availableLangs = Object.keys(translations);
     const selectedLang = availableLangs.includes(browserLang) ? browserLang : 'en';
@@ -490,25 +490,18 @@ function ChatPage() {
     ]);
   }, [currentLang]);
 
-  // 🔁 Scroll al principio cuando responde el bot
+  // 🔁 Control total de scroll según autor del mensaje
   useEffect(() => {
     const chatBox = chatBoxRef.current;
-    if (!chatBox) return;
-
     const lastMessage = messages[messages.length - 1];
-    if (lastMessage?.role === 'assistant') {
-      chatBox.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  }, [messages]);
+    if (!chatBox || !lastMessage) return;
 
-  // 🔁 Scroll al final cuando usted envía una pregunta
-  useEffect(() => {
-    const chatBox = chatBoxRef.current;
-    if (!chatBox) return;
-
-    const lastMessage = messages[messages.length - 1];
-    if (lastMessage?.role === 'user') {
-      chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    if (lastMessage.role === 'assistant') {
+      chatBox.scrollTo({ top: 0, behavior: 'smooth' }); // Mostrar desde el inicio
+    } else if (lastMessage.role === 'user') {
+      setTimeout(() => {
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' }); // Ir al final
+      }, 50);
     }
   }, [messages]);
 
