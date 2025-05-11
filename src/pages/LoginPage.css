@@ -130,10 +130,7 @@ body {
     width: 100%;
     max-width: 92vw;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100dvh;
+    margin: 5vh auto;
 }
 
   .auth-forms input,
