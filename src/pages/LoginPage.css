@@ -109,3 +109,41 @@ body {
   background-color: #c2185b;
 }
 
+@media only screen and (max-width: 768px) {
+  .auth-form-container {
+    padding: 1.5rem 1rem;
+    margin: 2rem auto;
+    width: 92%;
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+  }
+
+  .auth-forms input,
+  .auth-forms button {
+    font-size: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .google-button {
+    font-size: 1rem;
+    padding: 0.9rem;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .toggle-button-form {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .welcome-text {
+    font-size: 1rem;
+  }
+
+  .logout-button {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+}
