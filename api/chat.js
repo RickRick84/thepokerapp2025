@@ -1,42 +1,46 @@
-const functions = require('firebase-functions');
-const OpenAI = require('openai');
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-exports.chatWithOpenAI = functions.https.onRequest(async (req, res) => {
-  res.set("Access-Control-Allow-Origin", "https://thepokerapp2025.vercel.app"); // Permite frontend desde Vercel
-  res.set("Access-Control-Allow-Headers", "Content-Type");
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
-
+export default async function handler(req, res) {
   try {
+    const apiKey = process.env.OPENAI_API_KEY;
+
+    if (!apiKey) {
+      return res.status(500).json({ error: 'No OPENAI_API_KEY set in environment.' });
+    }
+
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method Not Allowed' });
+    }
+
     const { messages, model = 'gpt-4-turbo', temperature = 0.7 } = req.body;
 
-    const response = await openai.chat.completions.create({
-      model,
-      messages,
-      temperature
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model,
+        messages,
+        temperature
+      })
     });
 
-    const assistantMessage = response.choices[0].message;
+    const data = await response.json();
+
+    if (!response.ok) {
+      return res.status(response.status).json({ error: data });
+    }
 
     res.status(200).json({
-      choices: [{ message: assistantMessage }]
+      choices: [{ message: data.choices[0].message }]
     });
 
   } catch (error) {
-    console.error('Error in Firebase chatWithOpenAI:', error);
-
+    console.error('Error en chat.js (Vercel):', error);
     res.status(500).json({
       error: {
-        code: error.code || 'internal_error',
-        message: error.message || 'Error en la función Firebase.',
-        type: error.type || 'api_error',
-      },
+        message: error.message || 'Internal Server Error',
+      }
     });
   }
-});
+}
