@@ -23,9 +23,6 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!loading && user) {
-      const supportedLangs = ['es', 'en', 'pt'];
-      const browserLang = navigator.language.slice(0, 2);
-      const lang = supportedLangs.includes(browserLang) ? browserLang : 'es';
       navigate('/chat/');
     }
   }, [user, loading, navigate]);
@@ -37,7 +34,7 @@ const LoginPage = () => {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
     } catch (err) {
-      setError('Error al iniciar con Google');
+      setError('Error al iniciar sesión con Google.');
       console.error(err.message);
     } finally {
       setLoadingGoogle(false);
@@ -62,7 +59,7 @@ const LoginPage = () => {
         await signInWithEmailAndPassword(auth, email.trim(), password);
       }
     } catch (err) {
-      setError('No pudimos verificar tus datos. Asegurate de que el email esté bien escrito y la contraseña sea correcta.');
+      setError('No pudimos verificar tus datos. Revisá el email y la contraseña.');
       console.error(err.message);
     } finally {
       setLoadingForm(false);
@@ -78,13 +75,17 @@ const LoginPage = () => {
     }
   };
 
-  if (loading) return <p className="loading-text">Cargando...</p>;
+  if (loading) {
+    return <p className="loading-text">Cargando sesión...</p>;
+  }
 
   return (
     <div className="auth-form-container">
       {user ? (
         <div className="user-logged-in">
-          <p className="welcome-text">Bienvenido, {user.displayName || user.email}</p>
+          <p className="welcome-text">
+            Bienvenido, {user.displayName || user.email}
+          </p>
           <button className="logout-button" onClick={handleLogout}>
             Salir
           </button>
@@ -94,7 +95,6 @@ const LoginPage = () => {
           <h2>{isRegistering ? 'Registrarse' : 'Iniciar sesión'}</h2>
 
           {error && <p className="auth-error">{error}</p>}
-          {loadingGoogle && <div className="loading-bar google" />}
 
           <button
             onClick={loginWithGoogle}
@@ -121,10 +121,9 @@ const LoginPage = () => {
             />
             {isRegistering && (
               <small className="password-hint">
-                La contraseña debe tener al menos 6 caracteres. Se recomienda incluir una mayúscula y un número.
+                Se recomienda incluir una mayúscula y un número.
               </small>
             )}
-
             <button type="submit" disabled={loadingForm}>
               {loadingForm
                 ? isRegistering
@@ -142,8 +141,8 @@ const LoginPage = () => {
             className="toggle-button-form"
           >
             {isRegistering
-              ? '¿Ya tienes cuenta? Inicia sesión'
-              : '¿No tienes cuenta? Registrate'}
+              ? '¿Ya tenés cuenta? Iniciá sesión'
+              : '¿No tenés cuenta? Registrate'}
           </button>
         </div>
       )}

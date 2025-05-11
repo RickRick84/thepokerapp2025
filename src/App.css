@@ -9,23 +9,16 @@
 }
 
 /* Estilos Generales */
-html, body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+body {
   background-image: url('/bg.jpg');
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
-  color: #fff;
-  min-height: var(--app-height);
-  width: 100%;
-  overscroll-behavior: none;
-  overflow-x: hidden;
-  overflow-y: auto;
+  background-position: center;
+  background-attachment: fixed;
 }
 
-/* Contenedor principal */
+
+/* Contenedor general */
 .app {
   display: flex;
   flex-direction: column;
@@ -95,8 +88,10 @@ html, body {
 
 .message.assistant {
   align-self: flex-start;
-  background-color: #00ff88;
-  color: white;
+  background: linear-gradient(145deg, #00ff88 0%, #00c97d 100%);
+  color: black;
+  font-weight: 500;
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.3);
 }
 
 /* Barra de input */
@@ -135,7 +130,7 @@ html, body {
   background-color: #00e07a;
 }
 
-/* POPUP suscripción */
+/* Popup de suscripción */
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -172,6 +167,7 @@ html, body {
   box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
 }
 
+/* Botón cerrar */
 .close-btn {
   position: absolute;
   top: 14px;
@@ -188,6 +184,7 @@ html, body {
   color: #e91e63;
 }
 
+/* Admin */
 .admin-controls {
   margin-top: 1rem;
   display: flex;
@@ -204,6 +201,7 @@ html, body {
   font-size: 1rem;
 }
 
+/* Menú usuario */
 .user-menu-container {
   position: fixed;
   top: 12px;
@@ -213,16 +211,51 @@ html, body {
   align-items: center;
 }
 
+/* Créditos y upgrade */
 .credit-upgrade-container {
   position: fixed;
-  top: 12px;
-  right: 60px;
+  top: 19px;
+  right: 70px; /* Separamos del botón de sidebar */
   z-index: 1000;
   display: flex;
-  gap: 0.5rem;
   align-items: center;
+  gap: 0.5rem;
 }
 
+.credit-display {
+  font-size: 0.95rem;
+  color: #ffd700;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.credit-display::before {
+  content: "🪙";
+  font-size: 1rem;
+}
+
+.upgrade-button {
+  background-color: #fff;
+  color: #111;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+.upgrade-button:hover {
+  background-color: #ffef87;
+}
+
+/* Botón toggle sidebar */
 .sidebar-toggle-button {
   position: fixed;
   top: 12px;
@@ -235,6 +268,7 @@ html, body {
   cursor: pointer;
 }
 
+/* Popup coming soon */
 .coming-soon-popup {
   position: fixed;
   top: 50%;

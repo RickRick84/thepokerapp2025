@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { FaSignOutAlt, FaCogs, FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import './UserMenu.css';
+import '../components/UserMenu.css';
 
 function UserMenu() {
   const { user, logout } = useAuth();
@@ -27,24 +27,7 @@ function UserMenu() {
     account: 'Account',
     settings: 'Settings',
     signOut: 'Sign out',
-    pokerBet: 'POKER BET',
-    news: {
-      en: 'News',
-      es: 'Noticias',
-      fr: 'Actualités',
-      ru: 'Новости',
-      ja: 'ニュース',
-      zh: '新闻',
-      de: 'Nachrichten',
-      it: 'Notizie',
-      ar: 'أخبار',
-      pt: 'Notícias',
-      tr: 'Haberler',
-    },
   };
-
-  const browserLang = navigator.language?.slice(0, 2) || 'en';
-  const newsLabel = t.news[browserLang] || t.news.en;
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -57,7 +40,7 @@ function UserMenu() {
   };
 
   return (
-    <div className="user-menu" ref={menuRef} style={{ position: 'relative' }}>
+    <div className="user-menu" ref={menuRef}>
       <img
         src={user?.photoURL || '/default-avatar.png'}
         alt="Profile"
@@ -66,9 +49,9 @@ function UserMenu() {
       />
       {open && (
         <div className="dropdown-menu left-align">
-          <div onClick={() => alert('Account')}><FaUser /> {t.account}</div>
-          <div onClick={() => alert('Settings')}><FaCogs /> {t.settings}</div>
-          <div onClick={handleLogout}><FaSignOutAlt /> {t.signOut}</div>
+          <button onClick={() => alert('Account')}><FaUser /> {t.account}</button>
+          <button onClick={() => alert('Settings')}><FaCogs /> {t.settings}</button>
+          <button onClick={handleLogout}><FaSignOutAlt /> {t.signOut}</button>
         </div>
       )}
     </div>

@@ -1,23 +1,25 @@
 import React from 'react';
-import './SidebarMenu.css';
+import '../components/SidebarMenu.css';
 
-// Asegura el path con prefijo base correcto si estás sirviendo desde /PokerApp/
-const PokerBetLogo = '/pb_logo.png';  
+const PokerBetLogo = '/pb_logo.png';
 
 const SidebarMenu = ({ isOpen, toggleSidebar }) => {
   return (
-    <div className={`sidebar-menu ${isOpen ? 'open' : ''}`}>
-      <div className="sidebar-logo-container">
-        <div className="sidebar-logo-box">
+    <>
+      <button className="sidebar-toggle" onClick={toggleSidebar}>
+        ☰
+      </button>
+      <div className={`sidebar-menu ${isOpen ? 'open' : ''}`}>
+        <div className="sidebar-logo-container">
           <img src={PokerBetLogo} alt="PokerBet" className="sidebar-logo" />
         </div>
+        <button className="sidebar-link" onClick={toggleSidebar}>MERCHANDISING</button>
+        <button className="sidebar-link" onClick={toggleSidebar}>SORTEO SEMANAL</button>
+        <button className="sidebar-link" onClick={toggleSidebar}>SORTEO MENSUAL</button>
+        <button className="sidebar-link" onClick={toggleSidebar}>CALENDARIO</button>
+        <button className="sidebar-link" onClick={toggleSidebar}>NOTICIAS</button>
       </div>
-      <button className="sidebar-link" onClick={toggleSidebar}>🧢 <span>MERCHANDISING</span></button>
-      <button className="sidebar-link" onClick={toggleSidebar}>🎟️ <span>SORTEO SEMANAL</span></button>
-      <button className="sidebar-link" onClick={toggleSidebar}>🎰 <span>SORTEO MENSUAL</span></button>
-      <button className="sidebar-link" onClick={toggleSidebar}>📆 <span>CALENDARIO</span></button>
-      <button className="sidebar-link" onClick={toggleSidebar}>📰 <span>NEWS</span></button>
-    </div>
+    </>
   );
 };
 

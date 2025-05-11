@@ -1,35 +1,53 @@
+.user-menu {
+  position: fixed;
+  top: 14px;
+  left: 18px;
+  z-index: 9999;
+}
+
 .user-avatar {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00ff88;
   cursor: pointer;
-  border: 2px solid #fff;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+  transition: box-shadow 0.2s ease;
+}
+
+.user-avatar:hover {
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
 }
 
 .dropdown-menu.left-align {
   position: absolute;
-  top: 50px;
+  top: 52px;
   left: 0;
-  background-color: #222;
-  border: 1px solid #555;
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  z-index: 10000;
-  width: 160px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  width: 200px;
+  background-color: rgba(15, 15, 15, 0.96);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  padding: 0.4rem 0;
 }
 
 .dropdown-menu.left-align button {
   width: 100%;
   background: none;
   border: none;
-  color: white;
-  padding: 10px 16px;
+  color: #f1f1f1;
+  padding: 0.75rem 1rem;
   text-align: left;
-  cursor: pointer;
   font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .dropdown-menu.left-align button:hover {
-  background-color: #333;
+  background-color: rgba(0, 255, 136, 0.12);
+  color: #ffffff;
 }

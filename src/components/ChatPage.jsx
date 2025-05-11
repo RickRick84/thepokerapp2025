@@ -484,9 +484,26 @@ function ChatPage() {
   }
 }, [messages]);
 
+  if (authLoading) {
+  return (
+    <div style={{
+      padding: '2rem',
+      fontSize: '1.2rem',
+      color: '#00ff88',
+      backgroundColor: '#000',
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontFamily: 'sans-serif',
+      textAlign: 'center'
+    }}>
+      Cargando sesión...
+    </div>
+  );
+}
 
-  if (authLoading) return <p>Cargando...</p>;
-  if (!user) return <Navigate to="/login" replace />;
+if (!user) return <Navigate to="/login" replace />;
 
   const t = translations[currentLang];
   const isAdmin = user?.email === 'rickybarba@hotmail.com';
@@ -651,14 +668,10 @@ const incrementUsage = () => {
 
   <SidebarMenu isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <div className="credit-upgrade-container">
-        <div className="credit-display">{credits} credits</div>
-        <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
-      </div>
-
-      <button onClick={toggleSidebar} className="sidebar-toggle-button">
-  ☰
-</button>
+<div className="credit-upgrade-container">
+  <div className="credit-display">{credits} credits</div>
+  <button onClick={() => setShowPopup(true)} className="upgrade-button">Upgrade</button>
+</div>
       
         <div className="chat-box" ref={chatBoxRef}>
           {messages.slice(1).map((msg, idx) => {
