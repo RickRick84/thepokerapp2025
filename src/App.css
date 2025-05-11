@@ -60,15 +60,19 @@ body {
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
-  height: auto;
-  min-height: 0;
-  max-height: 68vh;
-  scrollbar-width: none;
+  min-height: 150px;          /* 🔥 Siempre visible incluso sin mensajes */
+  max-height: 68vh;           /* 🔥 Control para evitar romper layout */
+  scroll-behavior: smooth;    /* 🔥 Estética al hacer scroll automático */
+  scrollbar-width: thin;      /* Firefox */
 }
 
 .chat-box::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }
 
 /* Mensajes */
