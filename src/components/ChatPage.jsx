@@ -475,7 +475,7 @@ function ChatPage() {
     sendAudioRef.current.play().catch((error) => console.error('Error playing sound:', error));
   };
 
-      useEffect(() => {
+        useEffect(() => {
     const browserLang = navigator.language?.slice(0, 2) || 'en';
     const availableLangs = Object.keys(translations);
     const selectedLang = availableLangs.includes(browserLang) ? browserLang : 'en';
@@ -490,19 +490,19 @@ function ChatPage() {
     ]);
   }, [currentLang]);
 
-  // 🔁 Control total de scroll según autor del mensaje
   useEffect(() => {
     const chatBox = chatBoxRef.current;
-    const lastMessage = messages[messages.length - 1];
-    if (!chatBox || !lastMessage) return;
+    if (!chatBox || messages.length === 0) return;
 
-    if (lastMessage.role === 'assistant') {
-      chatBox.scrollTo({ top: 0, behavior: 'smooth' }); // Mostrar desde el inicio
-    } else if (lastMessage.role === 'user') {
-      setTimeout(() => {
-        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' }); // Ir al final
-      }, 50);
-    }
+    const lastMessage = messages[messages.length - 1];
+
+    setTimeout(() => {
+      if (lastMessage.role === 'assistant') {
+        chatBox.scrollTo({ top: 0, behavior: 'smooth' }); // Desde el principio del mensaje
+      } else if (lastMessage.role === 'user') {
+        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' }); // Al final
+      }
+    }, 80); // Da tiempo a renderizar el nuevo mensaje
   }, [messages]);
 
   if (authLoading) {
