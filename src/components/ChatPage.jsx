@@ -490,19 +490,13 @@ function ChatPage() {
     ]);
   }, [currentLang]);
 
-  useEffect(() => {
+    useEffect(() => {
     const chatBox = chatBoxRef.current;
     if (!chatBox || messages.length === 0) return;
 
-    const lastMessage = messages[messages.length - 1];
-
     setTimeout(() => {
-      if (lastMessage.role === 'assistant') {
-        chatBox.scrollTo({ top: 0, behavior: 'smooth' }); // Desde el principio del mensaje
-      } else if (lastMessage.role === 'user') {
-        chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' }); // Al final
-      }
-    }, 80); // Da tiempo a renderizar el nuevo mensaje
+      chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+    }, 80);
   }, [messages]);
 
   if (authLoading) {
