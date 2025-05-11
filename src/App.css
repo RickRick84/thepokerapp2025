@@ -9,14 +9,20 @@
 }
 
 /* Estilos Generales */
-body {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
   background-image: url('/bg.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
 }
-
 
 /* Contenedor general */
 .app {
@@ -32,18 +38,18 @@ body {
 
 /* Página del chat */
 .app.chat-page-container {
-  position: relative;
-  margin: 0 auto;
-  padding-top: 80px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: 100%;
-  max-width: 540px;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-x: hidden;
+  justify-content: flex-end;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  padding-top: 80px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+  position: relative;
 }
 
 /* Caja de mensajes */
@@ -59,9 +65,10 @@ body {
   flex-direction: column;
   margin-bottom: 0.8rem;
   box-sizing: border-box;
-  flex-grow: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  height: auto;
+  min-height: 0;
 }
 
 /* Mensajes */
