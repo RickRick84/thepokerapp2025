@@ -96,7 +96,8 @@ body {
 .message.user {
   align-self: flex-end;
   background-color: #00e0ff;
-  color: white;
+  color: black;
+  font-weight: 500;
 }
 
 .message.assistant {
