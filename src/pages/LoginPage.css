@@ -7,13 +7,17 @@ body {
 
 .auth-form-container {
   background: rgba(0, 0, 0, 0.75);
-  padding: 2.5rem 2rem;
+  padding: 2rem 1.5rem;
   max-width: 420px;
   width: 90%;
-  margin: 5rem auto;
+  margin: 0 auto;
   border-radius: 20px;
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
   backdrop-filter: blur(10px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .auth-forms {
@@ -122,30 +126,24 @@ body {
     overflow-x: hidden;
   }
 
-  .login-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.1rem;
-    padding: 1.5rem 1rem;
+  .auth-form-container {
+    padding: 1.5rem 1.2rem;
+    width: 100%;
+    max-width: 92vw;
     box-sizing: border-box;
+    min-height: 100vh;
   }
 
-  .login-container input,
-  .login-container button {
+  .auth-forms input,
+  .auth-forms button {
     width: 100%;
-    max-width: 420px;
     font-size: 1rem;
     padding: 0.9rem;
     border-radius: 10px;
     box-sizing: border-box;
   }
 
-  h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1.7rem;
+  .toggle-button-form {
+    font-size: 0.9rem;
   }
 }
