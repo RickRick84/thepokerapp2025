@@ -6,7 +6,6 @@ import { FaPaperPlane } from 'react-icons/fa';
 import AdminControls from './AdminControls';
 import UserMenu from './UserMenu';
 import '../App.css';
-import '../MobileFix.css';
 import buttons from '../buttonLabels.js';
 import SidebarMenu from './SidebarMenu';
 
