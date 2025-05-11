@@ -523,11 +523,11 @@ if (!user) return <Navigate to="/login" replace />;
   const t = translations[currentLang];
   const isAdmin = user?.email === 'rickybarba@hotmail.com';
 
-// 🧠 CONFIGURACIÓN
+
+// ✅ BLOQUE CORRECTO DE CONTROL DE LÍMITE DE USO Y COOLDOWN
 const MAX_FREE_QUESTIONS = 3;
 const COOLDOWN_MINUTES = 1;
 
-// 🧠 FUNCIONES DE CONTROL DE USO
 const getUsageData = () => {
   const raw = localStorage.getItem('usageData');
   return raw ? JSON.parse(raw) : { count: 0, lastTime: 0 };
@@ -552,13 +552,11 @@ const canAskQuestion = () => {
   const count = usageData.count || 0;
   const lastTime = usageData.lastTime || 0;
 
-  // ⏳ Si pasó el cooldown, solo resetea el contador, NO el lastTime
   if (now - lastTime > cooldownMillis) {
-    saveUsageData(0, lastTime);
+    saveUsageData(0, now); // reinicia contador y actualiza reloj
     return true;
   }
 
-  // 🔐 Limita preguntas si se superó el máximo
   return count < MAX_FREE_QUESTIONS;
 };
 
@@ -567,21 +565,19 @@ const incrementUsage = () => {
   saveUsageData(count + 1, lastTime);
 };
 
-  const sendMessageLogic = async () => {
+const sendMessageLogic = async () => {
   if (!input.trim()) return;
 
-  // 🔒 Verifica si puede preguntar
-  const usageData = getUsageData();
-if (!canAskQuestion()) {
-  setMessages((prev) => [
-    ...prev,
-    { role: 'assistant', content: t.comingSoon }
-  ]);
-  setShowPopup(true);
-  return;
-}
+  if (!canAskQuestion()) {
+    setMessages((prev) => [
+      ...prev,
+      { role: 'assistant', content: t.comingSoon }
+    ]);
+    setShowPopup(true);
+    return;
+  }
 
-saveUsageData(usageData.count + 1, usageData.lastTime);
+  incrementUsage();
 
   const userMessage = { role: 'user', content: input };
   const newMessages = [...messages, userMessage];
@@ -592,10 +588,10 @@ saveUsageData(usageData.count + 1, usageData.lastTime);
 
   try {
     const response = await fetch("/api/chat", {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ messages: newMessages }),
-});
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: newMessages })
+    });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
